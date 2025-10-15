@@ -29,6 +29,10 @@ jobs:
         run: |
           # Use commit SHA as version folder
           VERSION=${GITHUB_SHA}
-          echo "Deploying to version folder: $VERSION"
-          gsutil -m rsync -r -x "gha-creds-.*\.json$" . gs://github-actions-gcs-475209/$VERSION
+          echo "Deploying index.html to version folder: $VERSION"
           
+          # Copy only index.html
+          gsutil cp index.html gs://github-actions-gcs-475209/$VERSION/index.html
+          
+          # Optional: also update "latest" folder
+          gsutil cp index.html gs://github-actions-gcs-475209/latest/index.html
