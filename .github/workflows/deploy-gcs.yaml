@@ -22,7 +22,7 @@ jobs:
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v3
         with:
-          project_id: github-actions-gcs-475209
+          project_id: vb-github-actions-gcs
 
       # Deploy to GCS
       - name: Deploy via GCS
