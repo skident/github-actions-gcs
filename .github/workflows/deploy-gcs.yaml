@@ -27,6 +27,8 @@ jobs:
       # Deploy to GCS
       - name: Deploy via GCS
         run: |
-            gsutil -m rm -rf gs://github-actions-gcs-475209/* || echo "$?"
-            gsutil -m cp -r * gs://github-actions-gcs-475209/
+          # Use commit SHA as version folder
+          VERSION=${GITHUB_SHA}
+          echo "Deploying to version folder: $VERSION"
+          gsutil -m rsync -r -x "gha-creds-.*\.json$" . gs://github-actions-gcs-475209/$VERSION
           
