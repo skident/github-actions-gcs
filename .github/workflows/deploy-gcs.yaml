@@ -27,5 +27,6 @@ jobs:
       # Deploy to GCS
       - name: Deploy via GCS
         run: |
-          gsutil -m rm -rf gs://github-actions-gcs/* || echo "$?"
-          gsutil -m cp -r * gs://github-actions-gcs/
+            gsutil -m rm -rf gs://github-actions-gcs-475209/* || echo "$?"
+            gsutil -m cp -r * gs://github-actions-gcs-475209/
+          
